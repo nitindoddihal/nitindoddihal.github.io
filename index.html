@@ -1,506 +1,355 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitin Doddihal - AI Generalist</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background: #ffffff;
-            color: #1d1d1d;
-            line-height: 1.6;
-        }
-
-        header {
-            padding: 20px 40px;
-            border-bottom: 1px solid #f0f0f0;
-            position: sticky;
-            top: 0;
-            background: #ffffff;
-            z-index: 100;
-        }
-
-        header .logo {
-            font-size: 1.1em;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-        }
-
-        .container {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .hero {
-            padding: 100px 40px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .name {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            animation: fadeInScale 0.8s ease-out;
-        }
-
-        .title {
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: #555;
-            margin-bottom: 10px;
-            letter-spacing: -0.005em;
-            animation: fadeIn 0.8s ease-out 0.2s backwards;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #888;
-            margin-bottom: 50px;
-            line-height: 1.6;
-            animation: fadeIn 0.8s ease-out 0.3s backwards;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 14px 40px;
-            background: #1d1d1d;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: background 0.3s ease;
-            animation: fadeIn 0.8s ease-out 0.4s backwards;
-        }
-
-        .cta-button:hover {
-            background: #333;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        section {
-            padding: 80px 40px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.015em;
-            margin-bottom: 40px;
-        }
-
-        .background-section {
-            background: #f9f9f9;
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .experience-item h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: -0.01em;
-        }
-
-        .experience-item p {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        .why-section {
-            background: #ffffff;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-
-        .why-item {
-            padding: 40px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            border-left: 4px solid #1d1d1d;
-        }
-
-        .why-item h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: -0.01em;
-        }
-
-        .why-item p {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .why-item p:last-child {
-            margin-bottom: 0;
-        }
-
-        .skills-section {
-            background: #ffffff;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-        }
-
-        .skill-category {
-            background: #f9f9f9;
-            padding: 30px;
-            border-radius: 8px;
-        }
-
-        .skill-category h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: -0.01em;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 8px 0;
-            color: #666;
-            font-size: 0.95rem;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .skill-category li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #1d1d1d;
-        }
-
-        .next-chapter {
-            background: #1d1d1d;
-            color: white;
-        }
-
-        .next-chapter h2 {
-            color: white;
-        }
-
-        .next-chapter-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .next-chapter p {
-            color: #ccc;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .next-chapter ul {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .next-chapter li {
-            padding: 15px 0;
-            padding-left: 35px;
-            position: relative;
-            color: #ccc;
-            font-size: 1rem;
-        }
-
-        .next-chapter li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            font-weight: 700;
-            color: white;
-        }
-
-        .learning-path {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-        }
-
-        .learning-path h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #1d1d1d;
-        }
-
-        .learning-path p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        footer {
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid #f0f0f0;
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .name {
-                font-size: 2.5rem;
-            }
-
-            .title {
-                font-size: 1.3rem;
-            }
-
-            section {
-                padding: 60px 20px;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            .container {
-                padding: 0 20px;
-            }
-
-            header {
-                padding: 15px 20px;
-            }
-
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .next-chapter-content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">Profile</div>
-        </div>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="name">Nitin Doddihal</div>
-                <div class="title">Becoming an AI Generalist</div>
-                <div class="subtitle">30 years building enterprise sales empires. Now mastering AI to lead the next phase of enterprise transformation.</div>
-                <a href="#" class="cta-button">Learn My Journey</a>
-            </div>
-        </section>
-
-        <section class="background-section">
-            <div class="container">
-                <h2>Career Foundation</h2>
-                <div class="experience-grid">
-                    <div>
-                        <div class="stat-card">
-                            <div class="stat-number">30+</div>
-                            <div class="stat-label">Years in Enterprise Sales</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">$100M+</div>
-                            <div class="stat-label">In Revenue Built & Scaled</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Team Members Developed</div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>What I've Built</h3>
-                        <p><strong>At American Tower (7+ years):</strong> Led strategic growth across Asia-Pacific. Scaled business from market entry to ~$100M annual revenue through long-cycle MSAs with major telecom operators. Closed deals ranging from $20M to $3B. Built forecasting models for 10-15 year revenue horizons and presented board-level investment cases for new market entry.</p>
-                        <p><strong>As Co-Founder:</strong> Built and scaled IoT and process automation business across India and Southeast Asia. Led commercial strategy, market expansion, and cross-functional teams. Successfully exited to AGC Black Box in 2021.</p>
-                        <p><strong>As Managing Director:</strong> Took over 8-person team, scaled to 25. Built disciplined enterprise sales operation. Won BT London Cup twice in three years. Designed "Project Panorama"—consolidated 3 systems into unified pipeline/order/commission view, improving transparency and reducing revenue leakage by ~30%.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="skills-section">
-            <div class="container">
-                <h2>Core Strengths</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Enterprise Sales</h4>
-                        <ul>
-                            <li>Long-cycle deal structuring</li>
-                            <li>Enterprise MSA negotiations</li>
-                            <li>Strategic account planning</li>
-                            <li>New market entry & expansion</li>
-                            <li>Value-based selling frameworks</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Leadership & Strategy</h4>
-                        <ul>
-                            <li>Building high-performance teams</li>
-                            <li>Sales process discipline & cadence</li>
-                            <li>Pipeline governance & forecasting</li>
-                            <li>Market entry strategy</li>
-                            <li>Board-level communication</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Execution Excellence</h4>
-                        <ul>
-                            <li>Operating system design</li>
-                            <li>Revenue forecasting & modeling</li>
-                            <li>Cross-functional alignment</li>
-                            <li>Change management at scale</li>
-                            <li>P&L responsibility</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="why-section">
-            <div class="container">
-                <h2>Why AI. Why Now.</h2>
-                <div class="why-grid">
-                    <div class="why-item">
-                        <h3>1. Strategic Inflection Point</h3>
-                        <p>I've completed the Financial Times Board Director Programme (Level 7), deepening my understanding of governance, risk, and board effectiveness. I've deliberately created space for strategic professional development. This is exactly when to invest in understanding the technology reshaping every industry I've operated in—and every industry my next leadership role will touch.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <h3>2. AI Literacy is Non-Negotiable for Senior Leadership</h3>
-                        <p>Whether I lead a new venture, join a board, advise on digital transformation, or step into a C-suite role, credible AI understanding is table stakes. I don't want to be in a room where AI strategy is being discussed without the fluency to contribute meaningfully. This isn't optional—it's essential.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <h3>3. I've Built Operating Systems Before. AI is the Next One.</h3>
-                        <p>"Project Panorama" consolidated complexity into a single unified view. I've designed forecasting discipline, pipeline governance, and execution cadence that scale. AI is not just a tool—it's the next operating system that will transform how organizations function. I need to understand it deeply enough to architect it strategically.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <h3>4. My Enterprise Sales Expertise Becomes Exponentially More Valuable</h3>
-                        <p>Thirty years of closing long-cycle enterprise deals, managing complex stakeholders, understanding customer economics, and driving market entry—combined with deep AI understanding—opens entirely new opportunities. I can help organizations navigate AI adoption, build AI-driven business models, and transform sales operations through intelligent automation.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <h3>5. The Window is Now. Not Later.</h3>
-                        <p>AI is evolving at an extraordinary pace. The tools, techniques, and best practices are changing weekly. Learning now—when I have the focus and intentionality to do it properly—positions me ahead of the curve rather than playing catch-up later. I'm investing in understanding the landscape when I still have time to master it deeply.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <h3>6. This Defines My Next Leadership Chapter</h3>
-                        <p>I'm not restarting my career. I'm expanding it. Enterprise leadership + AI fluency + board-level judgment = positioning myself for roles that didn't exist 18 months ago. This is how I shape the next decade of my professional impact.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="next-chapter">
-            <div class="container">
-                <h2>My Next Chapter</h2>
-                <div class="next-chapter-content">
-                    <div>
-                        <p>I'm pursuing Outskill's AI Generalist program—not as a career reset, but as a strategic expansion of my leadership capability. The program aligns with exactly what I need:</p>
-                        <ul>
-                            <li>Business-focused AI learning, not technical model building</li>
-                            <li>Expert mentorship from practitioners actively building at scale</li>
-                            <li>Peer network of accomplished professionals navigating similar territory</li>
-                            <li>Flexible learning designed for busy leaders</li>
-                            <li>Real-world applications and portfolio-building</li>
-                            <li>Continuous curriculum updates as AI evolves</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="learning-path">
-                            <h4>What I'm Focused On</h4>
-                            <p><strong>Not:</strong> Becoming a data scientist or ML engineer. That's not the goal.</p>
-                            <p style="margin-top: 15px;"><strong>Instead:</strong> Understanding AI strategy, governance, organizational impact, and how to architect AI-driven business models and operating systems. How to think like a leader in an AI-transformed world.</p>
-                            <p style="margin-top: 15px;"><strong>Goal:</strong> Deep, credible fluency that enables me to lead transformation, advise boards, and position myself for roles that require both enterprise leadership expertise and AI-informed strategic thinking.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>30+ years of enterprise leadership. Next chapter: AI-informed transformation.</p>
-            <p style="margin-top: 10px;">nitin@shiromanee.com | +447930841818 | linkedin.com/in/nitin-doddihal</p>
-        </div>
-    </footer>
-</body>
-</html>
+from pptx import Presentation
+from pptx.util import Inches, Pt
+from pptx.enum.text import PP_ALIGN
+from pptx.dml.color import RGBColor
+
+# Create presentation
+prs = Presentation()
+prs.slide_width = Inches(10)
+prs.slide_height = Inches(7.5)
+
+def add_title_slide(title, subtitle):
+    """Add a title slide"""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])  # Blank layout
+    background = slide.background
+    fill = background.fill
+    fill.solid()
+    fill.fore_color.rgb = RGBColor(30, 60, 114)  # Dark blue
+    
+    # Title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(2.5), Inches(9), Inches(1.5))
+    title_frame = title_box.text_frame
+    title_frame.text = title
+    title_frame.paragraphs[0].font.size = Pt(66)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(255, 255, 255)
+    
+    # Subtitle
+    subtitle_box = slide.shapes.add_textbox(Inches(0.5), Inches(4.2), Inches(9), Inches(2))
+    subtitle_frame = subtitle_box.text_frame
+    subtitle_frame.word_wrap = True
+    subtitle_frame.text = subtitle
+    subtitle_frame.paragraphs[0].font.size = Pt(24)
+    subtitle_frame.paragraphs[0].font.color.rgb = RGBColor(220, 220, 220)
+
+def add_content_slide(title, sections):
+    """Add a content slide with sections"""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])  # Blank
+    background = slide.background
+    fill = background.fill
+    fill.solid()
+    fill.fore_color.rgb = RGBColor(255, 255, 255)
+    
+    # Title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.4), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = title
+    title_frame.paragraphs[0].font.size = Pt(44)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(30, 60, 114)
+    
+    # Border under title
+    line_shape = slide.shapes.add_shape(1, Inches(0.5), Inches(1.3), Inches(9), Inches(0))
+    line_shape.line.color.rgb = RGBColor(42, 82, 152)
+    line_shape.line.width = Pt(3)
+    
+    # Content
+    y_position = 1.6
+    for section_title, section_content in sections:
+        # Section title
+        section_box = slide.shapes.add_textbox(Inches(0.7), Inches(y_position), Inches(8.6), Inches(0.4))
+        section_frame = section_box.text_frame
+        section_frame.text = section_title
+        section_frame.paragraphs[0].font.size = Pt(16)
+        section_frame.paragraphs[0].font.bold = True
+        section_frame.paragraphs[0].font.color.rgb = RGBColor(30, 60, 114)
+        
+        # Section content
+        y_position += 0.45
+        content_box = slide.shapes.add_textbox(Inches(0.9), Inches(y_position), Inches(8.4), Inches(1.2))
+        content_frame = content_box.text_frame
+        content_frame.word_wrap = True
+        
+        if isinstance(section_content, list):
+            for i, item in enumerate(section_content):
+                if i > 0:
+                    content_frame.add_paragraph()
+                p = content_frame.paragraphs[i]
+                p.text = f"• {item}"
+                p.font.size = Pt(13)
+                p.font.color.rgb = RGBColor(70, 70, 70)
+                p.space_before = Pt(3)
+        else:
+            content_frame.text = section_content
+            content_frame.paragraphs[0].font.size = Pt(13)
+            content_frame.paragraphs[0].font.color.rgb = RGBColor(70, 70, 70)
+        
+        y_position += 1.3
+
+# SLIDE 1: Title
+add_title_slide("IDEAL Framework", 
+                "Transform Data into Executive Decisions\n\nA CoSTAR-Aligned Sequential Analysis Pipeline")
+
+# SLIDE 2: Overview
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+background = slide.background
+fill = background.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(255, 255, 255)
+
+title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.4), Inches(9), Inches(0.8))
+title_frame = title_box.text_frame
+title_frame.text = "The IDEAL Framework"
+title_frame.paragraphs[0].font.size = Pt(44)
+title_frame.paragraphs[0].font.bold = True
+title_frame.paragraphs[0].font.color.rgb = RGBColor(30, 60, 114)
+
+line_shape = slide.shapes.add_shape(1, Inches(0.5), Inches(1.3), Inches(9), Inches(0))
+line_shape.line.color.rgb = RGBColor(42, 82, 152)
+line_shape.line.width = Pt(3)
+
+# Subtitle
+subtitle_box = slide.shapes.add_textbox(Inches(0.7), Inches(1.6), Inches(8.6), Inches(0.6))
+subtitle_frame = subtitle_box.text_frame
+subtitle_frame.word_wrap = True
+subtitle_frame.text = "A four-stage pipeline that guides data analysis from intent to action, removing one layer of abstraction at each step."
+subtitle_frame.paragraphs[0].font.size = Pt(14)
+subtitle_frame.paragraphs[0].font.color.rgb = RGBColor(100, 100, 100)
+
+# Stage boxes
+stages = [
+    ("1", "Identify &\nImport", "Intent + Data\nIntegrity", RGBColor(102, 126, 234)),
+    ("2", "Describe &\nDiscover", "Understand\nLandscape", RGBColor(240, 147, 251)),
+    ("3", "Explore &\nExamine", "Surface\nPatterns", RGBColor(79, 172, 254)),
+    ("4", "Analyze &\nApply", "Transform into\nInsights", RGBColor(67, 233, 123))
+]
+
+x = 0.5
+for i, (num, stage_name, subtitle, color) in enumerate(stages):
+    # Box
+    box = slide.shapes.add_shape(1, Inches(x), Inches(2.8), Inches(2), Inches(1.8))
+    box.fill.solid()
+    box.fill.fore_color.rgb = color
+    box.line.color.rgb = color
+    
+    # Number
+    num_box = slide.shapes.add_textbox(Inches(x + 0.1), Inches(2.95), Inches(1.8), Inches(0.5))
+    num_frame = num_box.text_frame
+    num_frame.text = num
+    num_frame.paragraphs[0].font.size = Pt(48)
+    num_frame.paragraphs[0].font.bold = True
+    num_frame.paragraphs[0].font.color.rgb = RGBColor(255, 255, 255)
+    
+    # Stage name
+    name_box = slide.shapes.add_textbox(Inches(x + 0.1), Inches(3.5), Inches(1.8), Inches(0.8))
+    name_frame = name_box.text_frame
+    name_frame.word_wrap = True
+    name_frame.text = stage_name
+    name_frame.paragraphs[0].font.size = Pt(13)
+    name_frame.paragraphs[0].font.bold = True
+    name_frame.paragraphs[0].font.color.rgb = RGBColor(255, 255, 255)
+    
+    # Subtitle
+    sub_box = slide.shapes.add_textbox(Inches(x + 0.1), Inches(4.35), Inches(1.8), Inches(0.9))
+    sub_frame = sub_box.text_frame
+    sub_frame.word_wrap = True
+    sub_frame.text = subtitle
+    sub_frame.paragraphs[0].font.size = Pt(10)
+    sub_frame.paragraphs[0].font.color.rgb = RGBColor(255, 255, 255)
+    
+    x += 2.3
+
+# SLIDE 3: Stage 1
+add_content_slide("Stage 1: Identify & Import", [
+    ("Objective", "Clearly define the analysis intent, confirm successful data import, and establish a Learning Agenda that guides subsequent analysis."),
+    ("Key Activities", [
+        "Confirm data import and readability",
+        "Identify tables, fields, and schema",
+        "Validate structure supports key analyses",
+        "State primary analysis goal (1 sentence)",
+        "Create Learning Agenda (5–8 key business questions)"
+    ]),
+    ("Constraint", "⚠ No data analysis or insights. Intent-setting only."),
+])
+
+# SLIDE 4: Stage 2
+add_content_slide("Stage 2: Describe & Discover", [
+    ("Objective", "Describe the structure, contents, and quality of the dataset to ensure it is fit for analysis and surface early patterns and anomalies."),
+    ("Key Activities", [
+        "List all columns with data types",
+        "Display 5+ random sample rows",
+        "Perform data quality checks",
+        "Summarise structural observations",
+        "Frame exploratory questions (not insights)"
+    ]),
+    ("Constraint", "⚠ No aggregation, modelling, or KPI calculations. Description only."),
+])
+
+# SLIDE 5: Stage 3
+add_content_slide("Stage 3: Explore & Examine", [
+    ("Objective", "Explore the dataset to identify patterns, relationships, and early signals, and generate testable hypotheses—without drawing final conclusions."),
+    ("Key Activities", [
+        "Examine relationships across revenue, growth, churn",
+        "Highlight correlations, contrasts, and patterns",
+        "Generate clear, testable hypotheses",
+        "List questions data can answer vs. blocked by missing data",
+        "Suggest additional datasets (do not merge unless instructed)"
+    ]),
+    ("Constraint", "⚠ No forecasting, modelling, or recommendations. Hypotheses are provisional."),
+])
+
+# SLIDE 6: Stage 4
+add_content_slide("Stage 4: Analyze & Apply", [
+    ("Objective", "Analyse the dataset to produce clear, decision-relevant insights through cleaning, summarisation, and visualisation—for CEO consumption."),
+    ("Key Activities", [
+        "Perform data wrangling (clean, format)",
+        "Generate statistical summaries",
+        "Create clear visualisations (charts, graphs, dashboards)",
+        "Apply the 5-second rule to every output",
+        "Link each insight to the Learning Agenda"
+    ]),
+    ("Now Permitted", "✓ Analysis, statistical summaries, visualisations. Still Restricted: Predictive modelling (unless requested)."),
+])
+
+# SLIDE 7: CoSTAR Framework
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+background = slide.background
+fill = background.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(255, 255, 255)
+
+title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.4), Inches(9), Inches(0.8))
+title_frame = title_box.text_frame
+title_frame.text = "The CoSTAR Framework"
+title_frame.paragraphs[0].font.size = Pt(44)
+title_frame.paragraphs[0].font.bold = True
+title_frame.paragraphs[0].font.color.rgb = RGBColor(30, 60, 114)
+
+line_shape = slide.shapes.add_shape(1, Inches(0.5), Inches(1.3), Inches(9), Inches(0))
+line_shape.line.color.rgb = RGBColor(42, 82, 152)
+line_shape.line.width = Pt(3)
+
+# CoSTAR boxes
+costar_items = [
+    ("Context", "Set the scene, background info"),
+    ("Objective", "State exactly what AI should achieve"),
+    ("Steps", "Break down into sequential steps"),
+    ("Tools", "Specify available resources"),
+    ("Actions", "Define expected output format"),
+    ("Reflection", "Build in self-check")
+]
+
+y = 1.8
+for title, desc in costar_items:
+    # Box background
+    box = slide.shapes.add_shape(1, Inches(0.7), Inches(y), Inches(8.6), Inches(0.65))
+    box.fill.solid()
+    box.fill.fore_color.rgb = RGBColor(240, 244, 248)
+    box.line.color.rgb = RGBColor(42, 82, 152)
+    box.line.width = Pt(1)
+    
+    # Title
+    title_box = slide.shapes.add_textbox(Inches(0.85), Inches(y + 0.08), Inches(2), Inches(0.3))
+    title_frame = title_box.text_frame
+    title_frame.text = title
+    title_frame.paragraphs[0].font.size = Pt(14)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(30, 60, 114)
+    
+    # Description
+    desc_box = slide.shapes.add_textbox(Inches(3), Inches(y + 0.08), Inches(5.5), Inches(0.5))
+    desc_frame = desc_box.text_frame
+    desc_frame.word_wrap = True
+    desc_frame.text = desc
+    desc_frame.paragraphs[0].font.size = Pt(12)
+    desc_frame.paragraphs[0].font.color.rgb = RGBColor(70, 70, 70)
+    
+    y += 0.75
+
+# SLIDE 8: Summary Table
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+background = slide.background
+fill = background.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(255, 255, 255)
+
+title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.4), Inches(9), Inches(0.8))
+title_frame = title_box.text_frame
+title_frame.text = "IDEAL Pipeline at a Glance"
+title_frame.paragraphs[0].font.size = Pt(44)
+title_frame.paragraphs[0].font.bold = True
+title_frame.paragraphs[0].font.color.rgb = RGBColor(30, 60, 114)
+
+line_shape = slide.shapes.add_shape(1, Inches(0.5), Inches(1.3), Inches(9), Inches(0))
+line_shape.line.color.rgb = RGBColor(42, 82, 152)
+line_shape.line.width = Pt(3)
+
+# Create table
+rows, cols = 5, 5
+left = Inches(0.5)
+top = Inches(1.6)
+width = Inches(9)
+height = Inches(4.8)
+
+table_shape = slide.shapes.add_table(rows, cols, left, top, width, height)
+table = table_shape.table
+
+# Header row
+headers = ["Stage", "Mindset", "Activity", "Output", "Constraint"]
+for i, header in enumerate(headers):
+    cell = table.cell(0, i)
+    cell.text = header
+    cell.fill.solid()
+    cell.fill.fore_color.rgb = RGBColor(30, 60, 114)
+    for paragraph in cell.text_frame.paragraphs:
+        for run in paragraph.runs:
+            run.font.bold = True
+            run.font.size = Pt(11)
+            run.font.color.rgb = RGBColor(255, 255, 255)
+
+# Data rows
+data = [
+    ["Identify & Import", "Permission", "Define intent + validate", "Learning Agenda", "No analysis"],
+    ["Describe & Discover", "Understanding", "Schema review + QC", "Data fitness report", "No aggregation"],
+    ["Explore & Examine", "Hypothesis", "Pattern + correlation", "Testable hypotheses", "No forecasting"],
+    ["Analyze & Apply", "Action", "Cleaning + summaries", "CEO-ready insights", "No baseless recs"]
+]
+
+for row_idx, row_data in enumerate(data, 1):
+    for col_idx, cell_text in enumerate(row_data):
+        cell = table.cell(row_idx, col_idx)
+        cell.text = cell_text
+        if row_idx % 2 == 0:
+            cell.fill.solid()
+            cell.fill.fore_color.rgb = RGBColor(249, 249, 249)
+        for paragraph in cell.text_frame.paragraphs:
+            for run in paragraph.runs:
+                run.font.size = Pt(10)
+                run.font.color.rgb = RGBColor(70, 70, 70)
+
+# SLIDE 9: Best Practices
+add_content_slide("Best Practices & Tips", [
+    ("✓ Do", [
+        "Respect stage boundaries—don't skip or jump ahead",
+        "Make constraints explicit in every prompt",
+        "Include reflection/self-check at the end of each stage",
+        "Frame outputs for the CEO (clarity over completeness)",
+        "Document assumptions and data gaps transparently"
+    ]),
+    ("✗ Don't", [
+        "Create visualisations before understanding data quality",
+        "Draw conclusions without surfacing patterns first",
+        "Assume data gaps can be ignored—flag them early",
+        "Use jargon or technical language for executive outputs",
+        "Merge new datasets without explicit approval"
+    ]),
+])
+
+# SLIDE 10: Closing
+add_title_slide("Ready to Transform Data into Decisions",
+                "Use IDEAL + CoSTAR to run your SaaS analytics pipeline\nwith rigor and clarity.\n\nStart with Stage 1 • Move sequentially • Deliver CEO-ready insights by Stage 4")
+
+# Save presentation
+prs.save('IDEAL_Framework_CoSTAR.pptx')
+print("✓ PowerPoint file created: IDEAL_Framework_CoSTAR.pptx")
+print("Ready to download!")
