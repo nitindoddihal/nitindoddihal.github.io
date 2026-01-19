@@ -1,27 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nitin Doddihal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background: #0f172a;
-      color: #ffffff;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful Parenting - Digital Age Guidance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.3em;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        nav {
+            background: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 500;
+            font-size: 1.05em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 50px;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            font-weight: 400;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 15px;
+        }
+
+        section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 1.1em;
+            line-height: 1.9;
+        }
+
+        .key-points {
+            background: #f0e6ff;
+            padding: 30px;
+            border-left: 5px solid #667eea;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .key-points h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .key-points ul {
+            list-style-position: inside;
+            color: #2c3e50;
+        }
+
+        .key-points li {
+            margin-bottom: 12px;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 5px solid #66bb6a;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .tip-box strong {
+            color: #2e7d32;
+        }
+
+        .tip-box p {
+            margin: 0;
+            color: #1b5e20;
+        }
+
+        .highlight {
+            background: #fff9e6;
+            padding: 25px;
+            border-left: 5px solid #fbc02d;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+
+        .highlight p {
+            margin: 0;
+            color: #f57f17;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            font-size: 1em;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            section {
+                padding: 30px;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div>
-    <h1>Nitin Doddihal</h1>
-    <p>Professional profile — updating shortly</p>
-  </div>
+    <header>
+        <h1>Mindful Parenting</h1>
+        <p>Navigating the Digital Age with Confidence</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#screen-time">Screen Time</a></li>
+            <li><a href="#social-media">Social Media</a></li>
+            <li><a href="#healthy-habits">Healthy Habits</a></li>
+            <li><a href="#strategies">Strategies</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="screen-time">
+            <h2>Understanding Screen Time in Childhood</h2>
+            
+            <p>In today's digital world, screen time has become an unavoidable part of childhood. While technology offers tremendous educational benefits, excessive screen exposure can impact your child's physical health, sleep patterns, social development, and emotional well-being.</p>
+
+            <h3>The Effects of Excessive Screen Time</h3>
+            <p>Research shows that children spending more than 2 hours daily on screens may experience reduced attention spans, disrupted sleep cycles, and decreased physical activity. This can lead to obesity, eye strain, and delayed development of social skills.</p>
+
+            <div class="key-points">
+                <h4>Physical & Mental Health Impacts</h4>
+                <ul>
+                    <li><strong>Sleep Disruption:</strong> Blue light from screens suppresses melatonin, affecting sleep quality</li>
+                    <li><strong>Posture Issues:</strong> Extended screen time contributes to poor posture and neck pain</li>
+                    <li><strong>Eye Strain:</strong> Digital eye fatigue is increasingly common in young children</li>
+                    <li><strong>Reduced Physical Activity:</strong> Sedentary screen use increases obesity risk</li>
+                    <li><strong>Attention Challenges:</strong> Constant digital stimulation can reduce focus and concentration</li>
+                </ul>
+            </div>
+
+            <h3>Age-Appropriate Screen Guidelines</h3>
+            <p>The American Academy of Pediatrics provides these recommendations:</p>
+            
+            <div class="highlight">
+                <p>Children under 18 months: Avoid screens (except video chatting)</p>
+                <p style="margin-top: 12px;">Ages 18-24 months: High-quality programming with parental co-viewing</p>
+                <p style="margin-top: 12px;">Ages 2-5: Limit to 1 hour daily of quality content with your guidance</p>
+                <p style="margin-top: 12px;">Ages 6+: Consistent limits ensuring screens don't interfere with sleep, exercise, and other healthy behaviors</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="social-media">
+            <h2>The Impact of Social Media on Children</h2>
+            
+            <p>Social media has transformed how young people communicate and perceive themselves. While it can foster connection and creativity, it also presents unique challenges including cyberbullying, anxiety, low self-esteem, and addiction-like behaviors.</p>
+
+            <h3>Key Concerns</h3>
+            
+            <div class="key-points">
+                <h4>Mental Health & Well-being</h4>
+                <ul>
+                    <li><strong>Comparison Culture:</strong> Children constantly compare themselves to curated, filtered versions of peers' lives</li>
+                    <li><strong>Anxiety & Depression:</strong> Heavy social media use correlates with increased mental health issues</li>
+                    <li><strong>Sleep Problems:</strong> Late-night scrolling disrupts sleep and rest cycles</li>
+                    <li><strong>FOMO (Fear of Missing Out):</strong> Constant connectivity creates anxiety about being excluded</li>
+                    <li><strong>Cyberbullying:</strong> Online harassment can be severe, persistent, and deeply harmful</li>
+                    <li><strong>Privacy Risks:</strong> Children may unknowingly share sensitive personal information</li>
+                </ul>
+            </div>
+
+            <h3>Critical Development Years</h3>
+            <p>Adolescence is a crucial period for identity formation and emotional development. During these years, social approval becomes especially important, making young people vulnerable to social media's dopamine-driven feedback loops and pressure to maintain a perfect online image.</p>
+
+            <div class="tip-box">
+                <strong>💡 Expert Insight:</strong>
+                <p>Experts recommend delaying social media access until at least age 13, and ideally waiting until age 16 when critical thinking and self-regulation skills are more developed.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="healthy-habits">
+            <h2>Building Healthy Digital Habits</h2>
+            
+            <h3>Create a Technology Balance</h3>
+            <p>Rather than complete elimination, the goal is mindful, intentional use. Help your children develop a healthy relationship with technology through structured boundaries and positive role modeling.</p>
+
+            <div class="key-points">
+                <h4>Essential Practices</h4>
+                <ul>
+                    <li><strong>Screen-Free Zones:</strong> Bedrooms and dining areas should be device-free spaces</li>
+                    <li><strong>Screen-Free Times:</strong> Establish tech-free periods, especially before bedtime (at least 1 hour)</li>
+                    <li><strong>Co-Viewing:</strong> Watch and engage with content together when age-appropriate</li>
+                    <li><strong>Parental Controls:</strong> Use tools to limit access and monitor what children encounter</li>
+                    <li><strong>Quality Over Quantity:</strong> Prioritize educational, creative content over passive consumption</li>
+                </ul>
+            </div>
+
+            <h3>Encourage Offline Activities</h3>
+            <p>Balance digital time with activities that promote physical health, creativity, and genuine social connection. Regular outdoor play, sports, arts, reading, and family time are essential for healthy development.</p>
+
+            <div class="tip-box">
+                <strong>🎯 Action Step:</strong>
+                <p>Start by replacing just one hour of daily screen time with an engaging offline activity. This could be outdoor play, board games, cooking together, or creative projects.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="strategies">
+            <h2>Practical Parenting Strategies</h2>
+            
+            <h3>1. Model Healthy Behavior</h3>
+            <p>Children learn most from what they see. Examine your own screen habits and demonstrate balanced technology use. Put your phone away during meals and family time, and show your children that real-world connections matter most.</p>
+
+            <h3>2. Have Open Conversations</h3>
+            <p>Rather than simply forbidding technology, discuss why balance matters. Help children understand the impact of excessive screen time and social media on their mood, sleep, and relationships. Listen to their perspectives and concerns without judgment.</p>
+
+            <h3>3. Set Clear, Consistent Rules</h3>
+            <p>Establish and communicate specific guidelines about screen time, app usage, and online behavior. Be consistent in enforcing these rules, and involve older children in creating reasonable boundaries they can help monitor.</p>
+
+            <div class="key-points">
+                <h4>Sample Family Agreement</h4>
+                <ul>
+                    <li>No screens during meals or family time</li>
+                    <li>Devices charged overnight outside bedrooms</li>
+                    <li>Daily screen time limits based on age</li>
+                    <li>Regular check-ins about online experiences</li>
+                    <li>No phones during homework or bedtime routine</li>
+                    <li>Privacy discussions about sharing personal information</li>
+                </ul>
+            </div>
+
+            <h3>4. Use Parental Controls Wisely</h3>
+            <p>While not a replacement for conversation, parental control apps and built-in device features can help enforce boundaries. Make their use transparent—avoid secret monitoring, which erodes trust.</p>
+
+            <h3>5. Teach Digital Literacy</h3>
+            <p>Help children understand how algorithms work, recognize manipulative design, spot misinformation, and think critically about content. As they grow older, discuss online safety, privacy, and the permanence of digital footprints.</p>
+
+            <div class="tip-box">
+                <strong>📚 Learning Together:</strong>
+                <p>Explore social media and digital platforms alongside your children. Ask questions about what they're seeing, why certain content appeals to them, and how it makes them feel.</p>
+            </div>
+
+            <h3>6. Foster Real-World Connections</h3>
+            <p>Prioritize in-person activities that build genuine relationships. Encourage face-to-face friendships, family gatherings, outdoor adventures, and participation in clubs or sports. These real-world connections build resilience against the pressures of the digital world.</p>
+
+            <div class="highlight">
+                <p><strong>Remember:</strong> Your role as a parent is to guide, not control. The goal is to raise digitally literate children who can eventually self-regulate their technology use.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section>
+            <h2>Final Thoughts</h2>
+            <p>Parenting in the digital age is challenging, but it's also an opportunity to teach your children intentionality, self-awareness, and healthy decision-making. The strategies above are not rigid rules but starting points for your family's unique journey.</p>
+            
+            <p>Every child is different. What works for one may not work for another. Stay flexible, remain open to dialogue, and remember that small, consistent changes often yield the best long-term results.</p>
+
+            <p>The goal isn't to create a screen-free childhood—that's unrealistic today—but rather to raise children who can develop a balanced, healthy relationship with technology that enhances rather than diminishes their lives.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mindful Parenting. Helping families navigate the digital age with wisdom and care.</p>
+        <p>Remember: You're not expected to be perfect. You're just expected to care. And you clearly do.</p>
+    </footer>
 </body>
 </html>
