@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mindful Parenting - Digital Age Guidance</title>
+    <title>Coming Soon</title>
     <style>
         * {
             margin: 0;
@@ -12,481 +12,153 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: #2c3e50;
-            background-color: #f8f9fa;
-        }
-
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            font-size: 1.3em;
-            font-weight: 300;
-            opacity: 0.95;
-        }
-
-        nav {
-            background: white;
-            padding: 20px;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
             display: flex;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+            overflow: hidden;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #667eea;
-            font-weight: 500;
-            font-size: 1.05em;
-            transition: color 0.3s ease;
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
         }
 
-        nav a:hover {
-            color: #764ba2;
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.03;
+            background: #000;
         }
 
-        main {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -200px;
+            animation: drift 20s infinite ease-in-out;
         }
 
-        section {
-            background: white;
-            margin-bottom: 50px;
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -150px;
+            left: -150px;
+            animation: drift 25s infinite ease-in-out 5s;
         }
 
-        section h2 {
-            color: #667eea;
-            font-size: 2.2em;
-            margin-bottom: 25px;
-            font-weight: 400;
-            border-bottom: 3px solid #764ba2;
-            padding-bottom: 15px;
+        @keyframes drift {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(30px, -30px);
+            }
         }
 
-        section h3 {
-            color: #764ba2;
-            font-size: 1.5em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-weight: 500;
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.1;
+            color: #000;
+            margin-bottom: 30px;
+            animation: fadeInScale 0.8s ease-out;
         }
 
         p {
-            margin-bottom: 18px;
-            font-size: 1.1em;
-            line-height: 1.9;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #555;
+            letter-spacing: -0.005em;
+            line-height: 1.6;
+            animation: fadeIn 0.8s ease-out 0.2s backwards;
         }
 
-        .key-points {
-            background: #f0e6ff;
-            padding: 30px;
-            border-left: 5px solid #667eea;
-            margin: 25px 0;
-            border-radius: 4px;
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        .key-points h4 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .key-points ul {
-            list-style-position: inside;
-            color: #2c3e50;
-        }
-
-        .key-points li {
-            margin-bottom: 12px;
-            line-height: 1.7;
-            font-size: 1.05em;
-        }
-
-        .tip-box {
-            background: #e8f5e9;
-            border-left: 5px solid #66bb6a;
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-
-        .tip-box strong {
-            color: #2e7d32;
-        }
-
-        .tip-box p {
-            margin: 0;
-            color: #1b5e20;
-        }
-
-        .highlight {
-            background: #fff9e6;
-            padding: 25px;
-            border-left: 5px solid #fbc02d;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-
-        .highlight p {
-            margin: 0;
-            color: #f57f17;
-            font-weight: 500;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 80px;
-            font-size: 1em;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-            color: #ecf0f1;
-        }
-
-        .divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, transparent);
-            margin: 40px 0;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
+            h1 {
+                font-size: 3.5rem;
+                margin-bottom: 20px;
             }
 
-            header p {
-                font-size: 1.1em;
+            p {
+                font-size: 1.1rem;
             }
 
-            nav ul {
-                gap: 15px;
-            }
-
-            section {
+            .container {
                 padding: 30px;
             }
 
-            section h2 {
-                font-size: 1.8em;
+            .blob-1 {
+                width: 400px;
+                height: 400px;
+                top: -150px;
+                right: -150px;
+            }
+
+            .blob-2 {
+                width: 350px;
+                height: 350px;
+                bottom: -100px;
+                left: -100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Mindful Parenting</h1>
-        <p>Navigating the Digital Age with Confidence</p>
-    </header>
+    <div class="background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
 
-    <nav>
-        <ul>
-            <li><a href="#screen-time">Screen Time</a></li>
-            <li><a href="#social-media">Social Media</a></li>
-            <li><a href="#healthy-habits">Healthy Habits</a></li>
-            <li><a href="#strategies">Strategies</a></li>
-            <li><a href="#consultation" style="color: #e74c3c; font-weight: 600;">Get Help Now</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="consultation" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-            <h2 style="color: white; border-bottom-color: rgba(255,255,255,0.3);">Need Help? Talk to a Professional</h2>
-            
-            <p>If you're concerned about your child's behavior, screen time, social media use, or mental health, you don't have to figure this out alone. Professional consultation can provide personalized guidance for your family's unique situation.</p>
-
-            <h3 style="color: #e8d5ff;">When to Seek Professional Help</h3>
-            
-            <div class="key-points" style="background: rgba(255,255,255,0.15); border-left-color: #e8d5ff;">
-                <h4 style="color: #e8d5ff;">Consider contacting a professional if:</h4>
-                <ul style="color: white;">
-                    <li>Your child shows signs of anxiety, depression, or mood changes related to screen/social media use</li>
-                    <li>Screen time is causing significant family conflict</li>
-                    <li>Your child is experiencing cyberbullying or online harassment</li>
-                    <li>You notice changes in sleep, eating, or social patterns</li>
-                    <li>Your child is withdrawn, isolated, or showing behavioral issues</li>
-                    <li>You suspect addiction-like behavior or loss of control over device use</li>
-                    <li>You're unsure about age-appropriate boundaries or parenting approaches</li>
-                </ul>
-            </div>
-
-            <h3 style="color: #e8d5ff; margin-top: 40px;">Types of Professionals Who Can Help</h3>
-            
-            <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 4px; margin: 25px 0;">
-                <h4 style="color: #e8d5ff; margin-bottom: 15px;">Child Psychologist or Therapist</h4>
-                <p>Specializes in child development and mental health. Helps with anxiety, depression, behavioral issues, and family dynamics related to technology use.</p>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 4px; margin: 25px 0;">
-                <h4 style="color: #e8d5ff; margin-bottom: 15px;">Family Counselor</h4>
-                <p>Works with entire families to improve communication, set healthy boundaries, and resolve conflicts around technology and parenting approaches.</p>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 4px; margin: 25px 0;">
-                <h4 style="color: #e8d5ff; margin-bottom: 15px;">Digital Wellness Coach</h4>
-                <p>Provides specialized guidance on healthy technology habits, screen time management, and digital literacy for families.</p>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 4px; margin: 25px 0;">
-                <h4 style="color: #e8d5ff; margin-bottom: 15px;">Pediatrician or Family Doctor</h4>
-                <p>Can assess physical health impacts and refer you to specialists. Good starting point for overall health concerns.</p>
-            </div>
-
-            <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 4px; margin: 25px 0;">
-                <h4 style="color: #e8d5ff; margin-bottom: 15px;">School Counselor</h4>
-                <p>Often available at no cost through schools. Can address behavioral changes, social issues, and academic impacts.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="contact-resources">
-            <h2>How to Get Started With a Consultation</h2>
-            
-            <h3>Step-by-Step Guide</h3>
-            
-            <div style="background: #f0e6ff; padding: 25px; border-left: 5px solid #667eea; margin: 25px 0; border-radius: 4px;">
-                <p><strong style="color: #667eea;">Step 1: Identify Your Needs</strong></p>
-                <p>What specific concerns do you have? Is it screen time, social media anxiety, behavior changes, or something else? Being clear helps you find the right professional.</p>
-            </div>
-
-            <div style="background: #f0e6ff; padding: 25px; border-left: 5px solid #667eea; margin: 25px 0; border-radius: 4px;">
-                <p><strong style="color: #667eea;">Step 2: Start With Your Pediatrician</strong></p>
-                <p>Your child's doctor can provide initial assessment and referrals to specialists. They also understand your child's medical history.</p>
-            </div>
-
-            <div style="background: #f0e6ff; padding: 25px; border-left: 5px solid #667eea; margin: 25px 0; border-radius: 4px;">
-                <p><strong style="color: #667eea;">Step 3: Explore Available Resources</strong></p>
-                <p>Check insurance coverage, school services, community mental health centers, and online therapy platforms (many offer consultations at lower costs).</p>
-            </div>
-
-            <div style="background: #f0e6ff; padding: 25px; border-left: 5px solid #667eea; margin: 25px 0; border-radius: 4px;">
-                <p><strong style="color: #667eea;">Step 4: Schedule a Consultation</strong></p>
-                <p>Most professionals offer initial consultations. This is your chance to ask questions and see if they're the right fit for your family.</p>
-            </div>
-
-            <div style="background: #f0e6ff; padding: 25px; border-left: 5px solid #667eea; margin: 25px 0; border-radius: 4px;">
-                <p><strong style="color: #667eea;">Step 5: Prepare for Your Meeting</strong></p>
-                <p>Gather information about your concerns—behavioral changes, screen time habits, family dynamics. The more detail you provide, the better guidance you'll receive.</p>
-            </div>
-
-            <h3 style="margin-top: 40px;">Helpful Resources to Find Professionals</h3>
-            
-            <div class="key-points">
-                <h4>Online Directories & Services</h4>
-                <ul>
-                    <li><strong>Psychology Today Directory:</strong> Find therapists, counselors, and psychiatrists by location and specialty</li>
-                    <li><strong>TherapyDen, BetterHelp, Talkspace:</strong> Online therapy platforms offering flexible consultations</li>
-                    <li><strong>SAMHSA National Helpline:</strong> Free, confidential referral service (1-800-662-4357)</li>
-                    <li><strong>American Academy of Pediatrics:</strong> Findapediatrician.org for referrals</li>
-                    <li><strong>Your Health Insurance Provider:</strong> Check your plan's mental health provider network</li>
-                    <li><strong>Local Community Mental Health Centers:</strong> Often offer sliding scale fees based on income</li>
-                    <li><strong>School District Services:</strong> Free counseling and assessment through your child's school</li>
-                </ul>
-            </div>
-
-            <h3 style="margin-top: 40px;">Questions to Ask During Consultation</h3>
-            
-            <div class="key-points">
-                <h4>Important Questions</h4>
-                <ul>
-                    <li>What's your experience working with children and technology-related concerns?</li>
-                    <li>What approach do you use? (therapy style, methods, philosophy)</li>
-                    <li>How often would sessions typically occur?</li>
-                    <li>What are your fees and do you accept insurance?</li>
-                    <li>Can you provide references or testimonials from other parents?</li>
-                    <li>What are realistic timelines for seeing improvements?</li>
-                    <li>Do you offer family sessions or just individual sessions?</li>
-                    <li>How do you communicate progress and concerns with parents?</li>
-                </ul>
-            </div>
-
-            <div class="highlight">
-                <p><strong>💡 Important Note:</strong> Seeking professional help is a sign of strength, not failure. It shows you care about your child's wellbeing and are committed to finding the right support. Many families benefit enormously from expert guidance during challenging periods.</p>
-            </div>
-        </section>
-
-        <section id="screen-time">
-            <h2>Understanding Screen Time in Childhood</h2>
-            
-            <p>In today's digital world, screen time has become an unavoidable part of childhood. While technology offers tremendous educational benefits, excessive screen exposure can impact your child's physical health, sleep patterns, social development, and emotional well-being.</p>
-
-            <h3>The Effects of Excessive Screen Time</h3>
-            <p>Research shows that children spending more than 2 hours daily on screens may experience reduced attention spans, disrupted sleep cycles, and decreased physical activity. This can lead to obesity, eye strain, and delayed development of social skills.</p>
-
-            <div class="key-points">
-                <h4>Physical & Mental Health Impacts</h4>
-                <ul>
-                    <li><strong>Sleep Disruption:</strong> Blue light from screens suppresses melatonin, affecting sleep quality</li>
-                    <li><strong>Posture Issues:</strong> Extended screen time contributes to poor posture and neck pain</li>
-                    <li><strong>Eye Strain:</strong> Digital eye fatigue is increasingly common in young children</li>
-                    <li><strong>Reduced Physical Activity:</strong> Sedentary screen use increases obesity risk</li>
-                    <li><strong>Attention Challenges:</strong> Constant digital stimulation can reduce focus and concentration</li>
-                </ul>
-            </div>
-
-            <h3>Age-Appropriate Screen Guidelines</h3>
-            <p>The American Academy of Pediatrics provides these recommendations:</p>
-            
-            <div class="highlight">
-                <p>Children under 18 months: Avoid screens (except video chatting)</p>
-                <p style="margin-top: 12px;">Ages 18-24 months: High-quality programming with parental co-viewing</p>
-                <p style="margin-top: 12px;">Ages 2-5: Limit to 1 hour daily of quality content with your guidance</p>
-                <p style="margin-top: 12px;">Ages 6+: Consistent limits ensuring screens don't interfere with sleep, exercise, and other healthy behaviors</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="social-media">
-            <h2>The Impact of Social Media on Children</h2>
-            
-            <p>Social media has transformed how young people communicate and perceive themselves. While it can foster connection and creativity, it also presents unique challenges including cyberbullying, anxiety, low self-esteem, and addiction-like behaviors.</p>
-
-            <h3>Key Concerns</h3>
-            
-            <div class="key-points">
-                <h4>Mental Health & Well-being</h4>
-                <ul>
-                    <li><strong>Comparison Culture:</strong> Children constantly compare themselves to curated, filtered versions of peers' lives</li>
-                    <li><strong>Anxiety & Depression:</strong> Heavy social media use correlates with increased mental health issues</li>
-                    <li><strong>Sleep Problems:</strong> Late-night scrolling disrupts sleep and rest cycles</li>
-                    <li><strong>FOMO (Fear of Missing Out):</strong> Constant connectivity creates anxiety about being excluded</li>
-                    <li><strong>Cyberbullying:</strong> Online harassment can be severe, persistent, and deeply harmful</li>
-                    <li><strong>Privacy Risks:</strong> Children may unknowingly share sensitive personal information</li>
-                </ul>
-            </div>
-
-            <h3>Critical Development Years</h3>
-            <p>Adolescence is a crucial period for identity formation and emotional development. During these years, social approval becomes especially important, making young people vulnerable to social media's dopamine-driven feedback loops and pressure to maintain a perfect online image.</p>
-
-            <div class="tip-box">
-                <strong>💡 Expert Insight:</strong>
-                <p>Experts recommend delaying social media access until at least age 13, and ideally waiting until age 16 when critical thinking and self-regulation skills are more developed.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="healthy-habits">
-            <h2>Building Healthy Digital Habits</h2>
-            
-            <h3>Create a Technology Balance</h3>
-            <p>Rather than complete elimination, the goal is mindful, intentional use. Help your children develop a healthy relationship with technology through structured boundaries and positive role modeling.</p>
-
-            <div class="key-points">
-                <h4>Essential Practices</h4>
-                <ul>
-                    <li><strong>Screen-Free Zones:</strong> Bedrooms and dining areas should be device-free spaces</li>
-                    <li><strong>Screen-Free Times:</strong> Establish tech-free periods, especially before bedtime (at least 1 hour)</li>
-                    <li><strong>Co-Viewing:</strong> Watch and engage with content together when age-appropriate</li>
-                    <li><strong>Parental Controls:</strong> Use tools to limit access and monitor what children encounter</li>
-                    <li><strong>Quality Over Quantity:</strong> Prioritize educational, creative content over passive consumption</li>
-                </ul>
-            </div>
-
-            <h3>Encourage Offline Activities</h3>
-            <p>Balance digital time with activities that promote physical health, creativity, and genuine social connection. Regular outdoor play, sports, arts, reading, and family time are essential for healthy development.</p>
-
-            <div class="tip-box">
-                <strong>🎯 Action Step:</strong>
-                <p>Start by replacing just one hour of daily screen time with an engaging offline activity. This could be outdoor play, board games, cooking together, or creative projects.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="strategies">
-            <h2>Practical Parenting Strategies</h2>
-            
-            <h3>1. Model Healthy Behavior</h3>
-            <p>Children learn most from what they see. Examine your own screen habits and demonstrate balanced technology use. Put your phone away during meals and family time, and show your children that real-world connections matter most.</p>
-
-            <h3>2. Have Open Conversations</h3>
-            <p>Rather than simply forbidding technology, discuss why balance matters. Help children understand the impact of excessive screen time and social media on their mood, sleep, and relationships. Listen to their perspectives and concerns without judgment.</p>
-
-            <h3>3. Set Clear, Consistent Rules</h3>
-            <p>Establish and communicate specific guidelines about screen time, app usage, and online behavior. Be consistent in enforcing these rules, and involve older children in creating reasonable boundaries they can help monitor.</p>
-
-            <div class="key-points">
-                <h4>Sample Family Agreement</h4>
-                <ul>
-                    <li>No screens during meals or family time</li>
-                    <li>Devices charged overnight outside bedrooms</li>
-                    <li>Daily screen time limits based on age</li>
-                    <li>Regular check-ins about online experiences</li>
-                    <li>No phones during homework or bedtime routine</li>
-                    <li>Privacy discussions about sharing personal information</li>
-                </ul>
-            </div>
-
-            <h3>4. Use Parental Controls Wisely</h3>
-            <p>While not a replacement for conversation, parental control apps and built-in device features can help enforce boundaries. Make their use transparent—avoid secret monitoring, which erodes trust.</p>
-
-            <h3>5. Teach Digital Literacy</h3>
-            <p>Help children understand how algorithms work, recognize manipulative design, spot misinformation, and think critically about content. As they grow older, discuss online safety, privacy, and the permanence of digital footprints.</p>
-
-            <div class="tip-box">
-                <strong>📚 Learning Together:</strong>
-                <p>Explore social media and digital platforms alongside your children. Ask questions about what they're seeing, why certain content appeals to them, and how it makes them feel.</p>
-            </div>
-
-            <h3>6. Foster Real-World Connections</h3>
-            <p>Prioritize in-person activities that build genuine relationships. Encourage face-to-face friendships, family gatherings, outdoor adventures, and participation in clubs or sports. These real-world connections build resilience against the pressures of the digital world.</p>
-
-            <div class="highlight">
-                <p><strong>Remember:</strong> Your role as a parent is to guide, not control. The goal is to raise digitally literate children who can eventually self-regulate their technology use.</p>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <section>
-            <h2>Final Thoughts</h2>
-            <p>Parenting in the digital age is challenging, but it's also an opportunity to teach your children intentionality, self-awareness, and healthy decision-making. The strategies above are not rigid rules but starting points for your family's unique journey.</p>
-            
-            <p>Every child is different. What works for one may not work for another. Stay flexible, remain open to dialogue, and remember that small, consistent changes often yield the best long-term results.</p>
-
-            <p>The goal isn't to create a screen-free childhood—that's unrealistic today—but rather to raise children who can develop a balanced, healthy relationship with technology that enhances rather than diminishes their lives.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Mindful Parenting. Helping families navigate the digital age with wisdom and care.</p>
-        <p>Remember: You're not expected to be perfect. You're just expected to care. And you clearly do.</p>
-    </footer>
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>Something great is on the way.</p>
+    </div>
 </body>
 </html>
