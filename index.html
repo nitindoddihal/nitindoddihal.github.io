@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Nitin Doddihal - AI Generalist</title>
     <style>
         * {
             margin: 0;
@@ -14,79 +14,80 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
             background: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            color: #1d1d1d;
+            line-height: 1.6;
         }
 
-        .background {
-            position: fixed;
-            width: 100%;
-            height: 100%;
+        header {
+            padding: 20px 40px;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky;
             top: 0;
-            left: 0;
-            z-index: 0;
+            background: #ffffff;
+            z-index: 100;
         }
 
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.03;
-            background: #000;
-        }
-
-        .blob-1 {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -200px;
-            animation: drift 20s infinite ease-in-out;
-        }
-
-        .blob-2 {
-            width: 500px;
-            height: 500px;
-            bottom: -150px;
-            left: -150px;
-            animation: drift 25s infinite ease-in-out 5s;
-        }
-
-        @keyframes drift {
-            0%, 100% {
-                transform: translate(0, 0);
-            }
-            50% {
-                transform: translate(30px, -30px);
-            }
+        header .logo {
+            font-size: 1.1em;
+            font-weight: 600;
+            letter-spacing: -0.015em;
         }
 
         .container {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 600px;
-            padding: 40px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
 
-        h1 {
-            font-size: 5.5rem;
+        .hero {
+            padding: 100px 40px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .name {
+            font-size: 3.5rem;
             font-weight: 700;
-            letter-spacing: -0.015em;
+            letter-spacing: -0.02em;
             line-height: 1.1;
-            color: #000;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             animation: fadeInScale 0.8s ease-out;
         }
 
-        p {
-            font-size: 1.3rem;
+        .title {
+            font-size: 1.8rem;
             font-weight: 400;
             color: #555;
+            margin-bottom: 10px;
             letter-spacing: -0.005em;
-            line-height: 1.6;
             animation: fadeIn 0.8s ease-out 0.2s backwards;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 50px;
+            line-height: 1.6;
+            animation: fadeIn 0.8s ease-out 0.3s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 40px;
+            background: #1d1d1d;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            animation: fadeIn 0.8s ease-out 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            background: #333;
         }
 
         @keyframes fadeInScale {
@@ -109,56 +110,397 @@
             }
         }
 
+        section {
+            padding: 80px 40px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-bottom: 40px;
+        }
+
+        .background-section {
+            background: #f9f9f9;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .experience-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .experience-item p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .why-section {
+            background: #ffffff;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .why-item {
+            padding: 40px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #1d1d1d;
+        }
+
+        .why-item h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .why-item p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .why-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        .skills-section {
+            background: #ffffff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-category {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .skill-category h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            color: #666;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-category li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #1d1d1d;
+        }
+
+        .next-chapter {
+            background: #1d1d1d;
+            color: white;
+        }
+
+        .next-chapter h2 {
+            color: white;
+        }
+
+        .next-chapter-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .next-chapter p {
+            color: #ccc;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .next-chapter ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .next-chapter li {
+            padding: 15px 0;
+            padding-left: 35px;
+            position: relative;
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        .next-chapter li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: white;
+        }
+
+        .learning-path {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .learning-path h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1d1d1d;
+        }
+
+        .learning-path p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 3.5rem;
-                margin-bottom: 20px;
+            .name {
+                font-size: 2.5rem;
             }
 
-            p {
-                font-size: 1.1rem;
+            .title {
+                font-size: 1.3rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
             }
 
             .container {
-                padding: 30px;
+                padding: 0 20px;
             }
 
-            .blob-1 {
-                width: 400px;
-                height: 400px;
-                top: -150px;
-                right: -150px;
+            header {
+                padding: 15px 20px;
             }
 
-            .blob-2 {
-                width: 350px;
-                height: 350px;
-                bottom: -100px;
-                left: -100px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
+            .experience-grid {
+                grid-template-columns: 1fr;
             }
 
-            p {
-                font-size: 1rem;
+            .next-chapter-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="background">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
+    <header>
+        <div class="container">
+            <div class="logo">Profile</div>
+        </div>
+    </header>
 
-    <div class="container">
-        <h1>Coming Soon</h1>
-        <p>Something great is on the way.</p>
-    </div>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="name">Nitin Doddihal</div>
+                <div class="title">Becoming an AI Generalist</div>
+                <div class="subtitle">30 years building enterprise sales empires. Now mastering AI to lead the next phase of enterprise transformation.</div>
+                <a href="#" class="cta-button">Learn My Journey</a>
+            </div>
+        </section>
+
+        <section class="background-section">
+            <div class="container">
+                <h2>Career Foundation</h2>
+                <div class="experience-grid">
+                    <div>
+                        <div class="stat-card">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Years in Enterprise Sales</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">$100M+</div>
+                            <div class="stat-label">In Revenue Built & Scaled</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Team Members Developed</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>What I've Built</h3>
+                        <p><strong>At American Tower (7+ years):</strong> Led strategic growth across Asia-Pacific. Scaled business from market entry to ~$100M annual revenue through long-cycle MSAs with major telecom operators. Closed deals ranging from $20M to $3B. Built forecasting models for 10-15 year revenue horizons and presented board-level investment cases for new market entry.</p>
+                        <p><strong>As Co-Founder:</strong> Built and scaled IoT and process automation business across India and Southeast Asia. Led commercial strategy, market expansion, and cross-functional teams. Successfully exited to AGC Black Box in 2021.</p>
+                        <p><strong>As Managing Director:</strong> Took over 8-person team, scaled to 25. Built disciplined enterprise sales operation. Won BT London Cup twice in three years. Designed "Project Panorama"—consolidated 3 systems into unified pipeline/order/commission view, improving transparency and reducing revenue leakage by ~30%.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <div class="container">
+                <h2>Core Strengths</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Enterprise Sales</h4>
+                        <ul>
+                            <li>Long-cycle deal structuring</li>
+                            <li>Enterprise MSA negotiations</li>
+                            <li>Strategic account planning</li>
+                            <li>New market entry & expansion</li>
+                            <li>Value-based selling frameworks</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Leadership & Strategy</h4>
+                        <ul>
+                            <li>Building high-performance teams</li>
+                            <li>Sales process discipline & cadence</li>
+                            <li>Pipeline governance & forecasting</li>
+                            <li>Market entry strategy</li>
+                            <li>Board-level communication</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Execution Excellence</h4>
+                        <ul>
+                            <li>Operating system design</li>
+                            <li>Revenue forecasting & modeling</li>
+                            <li>Cross-functional alignment</li>
+                            <li>Change management at scale</li>
+                            <li>P&L responsibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-section">
+            <div class="container">
+                <h2>Why AI. Why Now.</h2>
+                <div class="why-grid">
+                    <div class="why-item">
+                        <h3>1. Strategic Inflection Point</h3>
+                        <p>I've completed the Financial Times Board Director Programme (Level 7), deepening my understanding of governance, risk, and board effectiveness. I've deliberately created space for strategic professional development. This is exactly when to invest in understanding the technology reshaping every industry I've operated in—and every industry my next leadership role will touch.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <h3>2. AI Literacy is Non-Negotiable for Senior Leadership</h3>
+                        <p>Whether I lead a new venture, join a board, advise on digital transformation, or step into a C-suite role, credible AI understanding is table stakes. I don't want to be in a room where AI strategy is being discussed without the fluency to contribute meaningfully. This isn't optional—it's essential.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <h3>3. I've Built Operating Systems Before. AI is the Next One.</h3>
+                        <p>"Project Panorama" consolidated complexity into a single unified view. I've designed forecasting discipline, pipeline governance, and execution cadence that scale. AI is not just a tool—it's the next operating system that will transform how organizations function. I need to understand it deeply enough to architect it strategically.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <h3>4. My Enterprise Sales Expertise Becomes Exponentially More Valuable</h3>
+                        <p>Thirty years of closing long-cycle enterprise deals, managing complex stakeholders, understanding customer economics, and driving market entry—combined with deep AI understanding—opens entirely new opportunities. I can help organizations navigate AI adoption, build AI-driven business models, and transform sales operations through intelligent automation.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <h3>5. The Window is Now. Not Later.</h3>
+                        <p>AI is evolving at an extraordinary pace. The tools, techniques, and best practices are changing weekly. Learning now—when I have the focus and intentionality to do it properly—positions me ahead of the curve rather than playing catch-up later. I'm investing in understanding the landscape when I still have time to master it deeply.</p>
+                    </div>
+
+                    <div class="why-item">
+                        <h3>6. This Defines My Next Leadership Chapter</h3>
+                        <p>I'm not restarting my career. I'm expanding it. Enterprise leadership + AI fluency + board-level judgment = positioning myself for roles that didn't exist 18 months ago. This is how I shape the next decade of my professional impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-chapter">
+            <div class="container">
+                <h2>My Next Chapter</h2>
+                <div class="next-chapter-content">
+                    <div>
+                        <p>I'm pursuing Outskill's AI Generalist program—not as a career reset, but as a strategic expansion of my leadership capability. The program aligns with exactly what I need:</p>
+                        <ul>
+                            <li>Business-focused AI learning, not technical model building</li>
+                            <li>Expert mentorship from practitioners actively building at scale</li>
+                            <li>Peer network of accomplished professionals navigating similar territory</li>
+                            <li>Flexible learning designed for busy leaders</li>
+                            <li>Real-world applications and portfolio-building</li>
+                            <li>Continuous curriculum updates as AI evolves</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="learning-path">
+                            <h4>What I'm Focused On</h4>
+                            <p><strong>Not:</strong> Becoming a data scientist or ML engineer. That's not the goal.</p>
+                            <p style="margin-top: 15px;"><strong>Instead:</strong> Understanding AI strategy, governance, organizational impact, and how to architect AI-driven business models and operating systems. How to think like a leader in an AI-transformed world.</p>
+                            <p style="margin-top: 15px;"><strong>Goal:</strong> Deep, credible fluency that enables me to lead transformation, advise boards, and position myself for roles that require both enterprise leadership expertise and AI-informed strategic thinking.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>30+ years of enterprise leadership. Next chapter: AI-informed transformation.</p>
+            <p style="margin-top: 10px;">nitin@shiromanee.com | +447930841818 | linkedin.com/in/nitin-doddihal</p>
+        </div>
+    </footer>
 </body>
 </html>
