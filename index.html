@@ -1,168 +1,265 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from pptx import Presentation
-from pptx.util import Inches, Pt
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-# Load Data
-df = pd.read_csv('SaaS-Sales-Dataset 2.csv')
-df['Order Date'] = pd.to_datetime(df['Order Date'], errors='coerce')
-df['Month_Year'] = df['Order Date'].dt.to_period('M').astype(str)
-df['Discount_Bin'] = pd.cut(df['Discount'], bins=[-0.01, 0.05, 0.15, 0.25, 0.35, 0.45, 0.85], 
-                            labels=['0-5%', '5-15%', '15-25%', '25-35%', '35-45%', '>45%'])
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
-# Set style
-sns.set_style("whitegrid")
-plt.rcParams['figure.figsize'] = (10, 6)
-plt.rcParams['font.size'] = 12
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-# --- Generate Charts ---
+        /* Animated background gradient */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(100, 200, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 100, 200, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 0%, rgba(100, 255, 200, 0.1) 0%, transparent 50%),
+                        #000;
+            animation: gradientShift 15s ease infinite;
+            z-index: 1;
+        }
 
-# 1. Revenue Trends
-monthly_sales = df.groupby('Month_Year')['Sales'].sum().reset_index()
-plt.figure()
-sns.lineplot(data=monthly_sales, x='Month_Year', y='Sales', marker='o', linewidth=2.5, color='#2c3e50')
-plt.xticks(rotation=45, ticks=range(0, len(monthly_sales), 3)) 
-plt.title('Monthly Revenue Trend (2020-2023)')
-plt.ylabel('Total Sales ($)')
-plt.xlabel('Month')
-plt.tight_layout()
-plt.savefig('slide_revenue_trend.png')
-plt.close()
+        @keyframes gradientShift {
+            0% {
+                background: radial-gradient(circle at 20% 50%, rgba(100, 200, 255, 0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 100, 200, 0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 40% 0%, rgba(100, 255, 200, 0.1) 0%, transparent 50%),
+                            #000;
+            }
+            50% {
+                background: radial-gradient(circle at 80% 20%, rgba(100, 200, 255, 0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 20% 80%, rgba(255, 100, 200, 0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 60% 80%, rgba(100, 255, 200, 0.1) 0%, transparent 50%),
+                            #000;
+            }
+            100% {
+                background: radial-gradient(circle at 20% 50%, rgba(100, 200, 255, 0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 80%, rgba(255, 100, 200, 0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 40% 0%, rgba(100, 255, 200, 0.1) 0%, transparent 50%),
+                            #000;
+            }
+        }
 
-# 2. Regional Performance (Sales vs Profit)
-region_perf = df.groupby('Region')[['Sales', 'Profit']].sum().reset_index()
-region_perf_melted = region_perf.melt(id_vars='Region', var_name='Metric', value_name='Amount')
-plt.figure()
-sns.barplot(data=region_perf_melted, x='Region', y='Amount', hue='Metric', palette=['#3498db', '#e74c3c'])
-plt.title('Sales vs. Profit by Region')
-plt.ylabel('Amount ($)')
-plt.tight_layout()
-plt.savefig('slide_region_perf.png')
-plt.close()
+        /* Blur overlay effect */
+        .blur-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-# 3. Discount Impact
-discount_perf = df.groupby('Discount_Bin')['Profit'].mean().reset_index()
-plt.figure()
-colors = ['#2ecc71' if x > 0 else '#e74c3c' for x in discount_perf['Profit']]
-sns.barplot(data=discount_perf, x='Discount_Bin', y='Profit', palette=colors)
-plt.title('Avg Profit by Discount Level (The Kill Zone)')
-plt.ylabel('Avg Profit per Order ($)')
-plt.axhline(0, color='black', linewidth=1)
-plt.tight_layout()
-plt.savefig('slide_discount_perf.png')
-plt.close()
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
 
-# 4. Product Performance
-prod_perf = df.groupby('Product')['Profit'].sum().sort_values().reset_index()
-top_bottom_prods = pd.concat([prod_perf.head(3), prod_perf.tail(3)])
-plt.figure()
-colors_prod = ['#e74c3c' if x < 0 else '#2ecc71' for x in top_bottom_prods['Profit']]
-sns.barplot(data=top_bottom_prods, y='Product', x='Profit', palette=colors_prod)
-plt.title('Best & Worst Products by Total Profit')
-plt.xlabel('Total Profit ($)')
-plt.tight_layout()
-plt.savefig('slide_product_perf.png')
-plt.close()
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: #64c8ff;
+            top: 10%;
+            left: 10%;
+            animation: float1 20s infinite ease-in-out;
+        }
 
-# 5. Customer Segments
-segment_sales = df.groupby('Segment')['Sales'].sum().reset_index()
-plt.figure()
-plt.pie(segment_sales['Sales'], labels=segment_sales['Segment'], autopct='%1.1f%%', colors=sns.color_palette('pastel'))
-plt.title('Revenue Share by Customer Segment')
-plt.tight_layout()
-plt.savefig('slide_segment_perf.png')
-plt.close()
+        .circle-2 {
+            width: 250px;
+            height: 250px;
+            background: #ff64c8;
+            top: 50%;
+            right: 5%;
+            animation: float2 25s infinite ease-in-out;
+        }
 
-# --- Create Presentation ---
-prs = Presentation()
+        .circle-3 {
+            width: 200px;
+            height: 200px;
+            background: #64ffc8;
+            bottom: 10%;
+            left: 50%;
+            animation: float3 22s infinite ease-in-out;
+        }
 
-def add_image_slide(prs, title, image_path, description):
-    slide_layout = prs.slide_layouts[5] 
-    slide = prs.slides.add_slide(slide_layout)
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, -50px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, 50px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, -50px); }
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInDown 1s ease-out 0.2s forwards;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #a1a1a6;
+            letter-spacing: -0.013em;
+            opacity: 0;
+            animation: fadeInDown 1s ease-out 0.4s forwards;
+        }
+
+
+
+        .footer {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            color: #86868b;
+            font-size: 0.85rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.8s forwards;
+        }
+
+        .footer a {
+            color: #0071e3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #0077ed;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .email-input {
+                flex-direction: column;
+            }
+
+            input[type="email"],
+            button {
+                width: 100%;
+            }
+
+            .content {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 0.95rem;
+            }
+
+            .cta-container {
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background"></div>
     
-    # Title
-    title_shape = slide.shapes.title
-    title_shape.text = title
-    
-    # Image
-    left = Inches(1)
-    top = Inches(1.5)
-    width = Inches(8)
-    slide.shapes.add_picture(image_path, left, top, width=width)
-    
-    # Description
-    textbox = slide.shapes.add_textbox(Inches(1), Inches(6), Inches(8), Inches(1))
-    tf = textbox.text_frame
-    p = tf.add_paragraph()
-    p.text = description
-    p.font.size = Pt(14) 
+    <!-- Blur Circles -->
+    <div class="blur-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
 
-# 1. Title Slide
-slide_layout = prs.slide_layouts[0]
-slide = prs.slides.add_slide(slide_layout)
-title = slide.shapes.title
-subtitle = slide.placeholders[1]
-title.text = "SaaS Sales Analysis: Momentum & Health"
-subtitle.text = "Generated by IDEAL Framework Analysis"
-
-# 2. Analysis Goals
-slide_layout = prs.slide_layouts[1]
-slide = prs.slides.add_slide(slide_layout)
-title = slide.shapes.title
-title.text = "Analysis Goals & Scope"
-content = slide.placeholders[1]
-content.text = "Primary Objective: Assess business momentum and identify profit leaks.\n\n" \
-               "Key Metrics Tracked:\n" \
-               "- Revenue Growth (YoY, MoM)\n" \
-               "- Profitability & Margins\n" \
-               "- Segment & Product Performance\n" \
-               "- Discount Efficiency"
-
-# 3. Revenue Trend
-add_image_slide(prs, "Revenue Growth Trajectory", "slide_revenue_trend.png", 
-                "Insight: Consistent Q4 seasonality observed. Overall trend is positive.")
-
-# 4. Regional Performance
-add_image_slide(prs, "Regional Profitability Gap", "slide_region_perf.png",
-                "Insight: EMEA/AMER are healthy. APJ generates volume but negligible profit.")
-
-# 5. Discount Impact
-add_image_slide(prs, "The Discount 'Kill Zone'", "slide_discount_perf.png",
-                "Insight: Discounts >25% destroy profitability. Discounts >45% guarantee losses.")
-
-# 6. Product Performance
-add_image_slide(prs, "Product Winners & Losers", "slide_product_perf.png",
-                "Insight: 'Alchemy' drives profit. 'Marketing Suite' is a loss leader.")
-
-# 7. Customer Segments
-add_image_slide(prs, "Segment Contribution", "slide_segment_perf.png",
-                "Insight: SMBs contribute ~50% of revenue.")
-
-# 8. Key Insights
-slide_layout = prs.slide_layouts[1]
-slide = prs.slides.add_slide(slide_layout)
-title = slide.shapes.title
-title.text = "Executive Summary: Key Insights"
-content = slide.placeholders[1]
-content.text = "1. Growth is Healthy: Strong YoY growth, Q4 seasonality.\n" \
-               "2. APJ Region is Broken: High volume, <3% margin due to discounts.\n" \
-               "3. Discount Discipline Needed: >25% discount is unprofitable.\n" \
-               "4. Product Portfolio: 'Marketing Suite' drags down margins."
-
-# 9. Actions
-slide_layout = prs.slide_layouts[1]
-slide = prs.slides.add_slide(slide_layout)
-title = slide.shapes.title
-title.text = "Recommended Actions"
-content = slide.placeholders[1]
-content.text = "IMMEDIATE ACTIONS:\n" \
-               "- Cap sales discounts at 25%.\n" \
-               "- Audit APJ pricing strategy.\n" \
-               "- Review 'Marketing Suite' costs.\n\n" \
-               "STRATEGIC ACTIONS:\n" \
-               "- Investigate Q1 slumps.\n" \
-               "- Collect churn/retention data."
-
-prs.save('SaaS_Analysis_Deck.pptx')
-print("Deck saved as SaaS_Analysis_Deck.pptx")
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Coming Soon</h1>
+    </div>
+</body>
+</html>
