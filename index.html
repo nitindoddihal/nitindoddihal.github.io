@@ -750,12 +750,12 @@ footer p {
   gap: 10px;
 ">
   <!-- Expanded panel (hidden by default) -->
-  <div id="float-panel" hidden style="
+  <div id="float-panel" style="
+    display: none;
     background: var(--bg);
     border: 1px solid var(--rule);
     padding: 20px 24px;
     min-width: 220px;
-    display: flex;
     flex-direction: column;
     gap: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.12);
@@ -790,9 +790,10 @@ footer p {
   <button id="float-btn" onclick="
     var panel = document.getElementById('float-panel');
     var btn = document.getElementById('float-btn');
-    panel.hidden = !panel.hidden;
-    btn.setAttribute('aria-expanded', !panel.hidden);
-    btn.querySelector('.float-label').textContent = panel.hidden ? 'Get in touch' : 'Close';
+    var isOpen = panel.style.display === 'flex';
+    panel.style.display = isOpen ? 'none' : 'flex';
+    btn.setAttribute('aria-expanded', !isOpen);
+    btn.querySelector('.float-label').textContent = isOpen ? 'Get in touch' : 'Close';
   " aria-expanded="false" style="
     background: var(--accent);
     color: #fff;
